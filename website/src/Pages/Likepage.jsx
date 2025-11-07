@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 import Loading from "../compontes/Loading"
 import { useCardsHook } from "../Hook/CartsHook"
 const Likepage = () => {
-    const {handleCart}=useCardsHook()
+    const { handleCart } = useCardsHook()
     const { Lengthmethod } = useLenHook()
     const { proid, removepro } = useProData();
     const { data, featchdata } = FeatchHook();
@@ -34,7 +34,7 @@ const Likepage = () => {
         <div>
             {
                 data.length == 0 ? (
-                  <Loading />
+                    <Loading />
                 ) : (
                     <>
                         <Navegationbar />
@@ -62,16 +62,21 @@ const Likepage = () => {
                                         items.map((d) => {
                                             return (
                                                 <>
-                                                <div className="mx-5 flex  md:w-10/12 justify-between md:mx-25 font-medium border-gray-400 border-2 p-2 mt-2 rounded-[5px]" key={d.id}>
-                                                        <div className="flex gap-2 w-1/2 md:gap-5 items-center" key={d.id}>
+                                                    <div className="mx-5 flex md:flex md:w-10/12 justify-between md:mx-25 font-medium border-gray-400 border-2 p-2 mt-2 rounded-[5px]" key={d.id}>
+                                                        <img src={d.images} width="90px" className="md:hidden" />
+                                                        <div className="hidden md:flex gap-2 w-1/2 md:gap-5 items-center" key={d.id}>
                                                             <img src={d.images} width="90px" />
-                                                            <p>{d.title}</p>
+                                                            <p className=" text-nowrap">{d.title}</p>
                                                         </div>
-                                                        <div className="flex w-1/2 justify-end md:gap-18 gap-4 items-center mt-5">
-                                                            <span className="my-auto">₹{d.price}</span>
-                                                            <button className=" border-2 border-gray-400 py-2 hover:bg-gray-700 
-                                                            hover:text-white px-2 rounded-[5px] h-10" onClick={()=>handleCart(d.id)}>Add to cart</button>
-                                                            <img src={bin} width="35px" onClick={() => handleDlt(d.id)} />
+                                                        <div className="w-full mx-5">
+                                                            <p className="md:hidden text-nowrap">{d.title}</p>
+                                                            <div className="flex md:w-full
+                                                             md:justify-end md:gap-18 gap-4 items-center mt-4 md:mt-5">
+                                                                <span className="my-auto">₹{d.price}</span>
+                                                                <button className=" border-2 border-gray-400 py-1 hover:bg-gray-700 
+                                                            hover:text-white px-1 rounded-[5px] h-10" onClick={() => handleCart(d.id)}>Add to cart</button>
+                                                                <img src={bin} width="25px" onClick={() => handleDlt(d.id)} />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </>

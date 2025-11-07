@@ -9,7 +9,6 @@ const Accountpage = () => {
     const [name,setName]=useState('')
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
-    console.log(user.id);
     const handleupdate=(id)=>{
         if(!email||!password||!name){
             alert("enter the all filed")

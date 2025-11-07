@@ -28,7 +28,7 @@ const Purchase = () => {
     }, [])
     const navegation = useNavigate();
     const handlepaymentpage=()=>{
-        navegation("*")
+        navegation("/*")
     }
     return (
         <div>
@@ -41,11 +41,8 @@ const Purchase = () => {
                         <span className="w-1/3 h-15  border-2 border-gray-400 rounded-[5px] py-1 px-5"><img src={ap} width="70px" /></span>
                     </div>
                     <span className=" mx-35 md:mx-75">OR</span>
+                    <p className=" mx-20 md:mx-60">Contact information</p>
                     <div>
-                        <div className=" mx-auto flex justify-between flex-col md:flex-row items-center">
-                            <p>Contact information</p>
-                            <p>Already have an account?<Link to={"/"}><span className=" text-blue-500 ps-2 font-medium">Login</span></Link></p>
-                        </div>
                         <input type="text" placeholder="Email*" className="w-full border-2 border-gray-400 p-1 my-5 rounded-[5px]" />
                         <div className=" flex gap-2">
                             <input type="checkbox"></input>

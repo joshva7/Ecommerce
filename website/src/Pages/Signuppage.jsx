@@ -1,4 +1,3 @@
-import Navegationbar from "../compontes/Navegationbar"
 import glogo from '../assets/gicon.png'
 import alogo from '../assets/alogo.png'
 import flogo from '../assets/flogo.png'
@@ -24,10 +23,12 @@ const Signuppage = () => {
             Navigate("/home");
         }
     }
+    const handleOathu=()=>{
+        Navigate("*")
+    }
     return (
         <div>
-            <Navegationbar />
-            <div className="mx-3 my-10 md:mx-25 md:my-2 text-gray-400">
+            <div className="mx-3 my-10 md:mt-15 md:mx-25 md:my-2 text-gray-400">
                 <p className=" text-2xl text-[#425a8b] font-medium">Create an account</p>
                 <p className="">Access to all features. No credit card required.</p>
             </div>
@@ -56,9 +57,9 @@ const Signuppage = () => {
                 <div className="mt-10 md:w-1/4">
                     <p className=" text-2xl text-[#425a8b] font-medium">Use Social Network Account</p>
                     <div className="font-medium my-5">
-                        <div className="w-full px-5 py-2 my-4 border-2 border-gray-300 rounded-[5px] flex gap-1 justify-center items-end ">Sign up with<img src={glogo} width="50px" /></div>
-                        <div className="w-full  px-5 py-2 my-4 border-2 border-gray-300 rounded-[5px] flex gap-1 justify-center items-end">Sign up with<img src={alogo} width="50px" /></div>
-                        <div className="w-full  px-5 py-2 my-4 border-2 border-gray-300 rounded-[5px] flex gap-1 justify-center items-center">Sign up with<img src={flogo} width="50px" /></div>
+                        <div onClick={handleOathu} className="w-full px-5 py-2 my-4 border-2 border-gray-300 rounded-[5px] flex gap-1 justify-center items-end ">Sign up with<img src={glogo} width="50px" /></div>
+                        <div onClick={handleOathu} className="w-full  px-5 py-2 my-4 border-2 border-gray-300 rounded-[5px] flex gap-1 justify-center items-end">Sign up with<img src={alogo} width="50px" /></div>
+                        <div onClick={handleOathu} className="w-full  px-5 py-2 my-4 border-2 border-gray-300 rounded-[5px] flex gap-1 justify-center items-center">Sign up with<img src={flogo} width="50px" /></div>
                     </div>
 
                 </div>

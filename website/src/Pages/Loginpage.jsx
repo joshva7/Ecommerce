@@ -1,4 +1,4 @@
-import Navegationbar from "../compontes/Navegationbar"
+import loginimg from '../assets/login.svg'
 import { Link, useNavigate } from "react-router-dom"
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Hook/AuthProvider";
@@ -42,9 +42,8 @@ const Loginpage = () => {
 
     }
     return (
-        <div>
-            <Navegationbar />
-            <div className="text-gray-500 mx-5 md:mx-25 mt-15 md:w-1/2">
+        <div className='md:grid grid-cols-2 w-full items-center'>
+            <div className="text-gray-500 mx-5 md:mx-25 mt-15 md:w-full">
                 <span className=" text-3xl text-[#425a8b] font-bold">Member  Login</span>
                 <span className="block mb-4">Welcome back {profile?.name} !</span>
                 <p className="font-medium mt-2">Email / Phone / Username *</p>
@@ -55,11 +54,13 @@ const Loginpage = () => {
                 <div className=" block my-2">
                     <input type="checkbox" className=" peer-[1]:" />
                     <span className=" inline">Remember me</span>
-                    <span className="block hover:text-blue-400 my-4 md:my-0 md:ms-25">Forgot your password?</span>
                 </div>
                 <button className="w-full block px-5 py-2 my-4 hover:text-[#425a8b] hover:bg-white hover:border-2 outline-0 duration-500 
                 hover:border-[#425a8b] bg-[#425a8b] text-white rounded-[5px] md:w-1/2 font-bold" onClick={loginsumbit}>Sign up</button>
                 <p>Have not an account?<Link to={"/signup"}><span className="text-[#425a8b]"> Sign Up</span></Link></p>
+            </div>
+            <div className='mt-20 hidden md:block'>
+                <img src={loginimg} />
             </div>
         </div>
     )

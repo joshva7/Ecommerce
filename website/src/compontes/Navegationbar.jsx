@@ -26,9 +26,11 @@ const Navegationbar = () => {
         <>
             <div className=" flex justify-between px-10 py-5  bg-gray-50 border-b-2  w-full  sticky top-0 z-50">
                 <div className=' flex items-baseline gap-10'>
-                    <Link to={"/home"}>
-                        <p className=' font-bold text-2xl'>Ecom</p>
-                    </Link>
+                    <p className=' font-bold text-2xl'>
+                       <Link to={"/home"}>
+                       Ecom
+                       </Link> 
+                       </p>
                     <div className='hidden md:block'>
                         <span onClick={() => setPopupshow(true)}>
                             <Searchfiled />
@@ -52,15 +54,20 @@ const Navegationbar = () => {
                             }
                         </li>
                         {
-                            account && (
-                                <div className=' fixed z-50 top-21 bg-white rounded-[5px] border-2 border-gray-400 px-6 py-5  '>
-                                    <span className='block my-2' onClick={() => setAccount(false)}><Link to={"/account"}>
-                                        Myaccount
-                                    </Link>
-                                    </span>
-                                    <span className='block my-2' onClick={logoutfu}>Logout</span>
-                                    <span className='block my-2' onClick={() => setAccount(false)}>Close</span>
-                                </div>
+                            user && (<>
+                                {
+                                    account && (
+                                        <div className=' fixed z-50 top-21 bg-white rounded-[5px] border-2 border-gray-400 px-6 py-5  '>
+                                            <span className='block my-2' onClick={() => setAccount(false)}><Link to={"/account"}>
+                                                Myaccount
+                                            </Link>
+                                            </span>
+                                            <span className='block my-2' onClick={logoutfu}>Logout</span>
+                                            <span className='block my-2' onClick={() => setAccount(false)}>Close</span>
+                                        </div>
+                                    )
+                                }
+                            </>
                             )
                         }
                         <Link to={"/carts"}>

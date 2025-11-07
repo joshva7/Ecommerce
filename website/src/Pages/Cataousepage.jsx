@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import { FeatchHook } from "../Hook/FeatchHook"
 import Navegationbar from "../compontes/Navegationbar"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import flexicon from '../assets/flexicon.svg'
 import gridicon from '../assets/gridicon.svg'
 import emptybox from '../assets/nopro.jpg'
 import { useCardsHook } from "../Hook/CartsHook"
+import heart from '../assets/heart.svg'
+import { useProData } from "../Hook/Prodatehook"
 const Cataousepage = () => {
     const { handleCart } = useCardsHook();
+    const { handleProid } = useProData();
     const { data, featchdata } = FeatchHook();
     const [fliterdata, setFliterdata] = useState([]);
     const [show, setShow] = useState(10)
@@ -24,12 +27,31 @@ const Cataousepage = () => {
     useEffect(() => {
         setFliterdata(data);
     }, [data])
-    console.log(!rowss);
+    const Navegater = useNavigate();
+    const handleNavepro = (id) => {
+        Navegater(`/prodate/${id}`)
+    }
+    const [poupbox, setPoupbox] = useState(false);
+    const poupBox = (id) => {
+        if (id) {
+            setPoupbox(true);
+        }
+        setTimeout(() => {
+            setPoupbox(false);
+        }, 2000)
+    }
     return (
         <div>
-            <div>
-                <Navegationbar />
-            </div>
+            <Navegationbar />
+            {
+                poupbox && (
+                    <div className=" relative w-full flex justify-center text-white font-medium">
+                        <div className="absolute top-5 bg-indigo-600 text-white text-sm px-4 py-2 rounded-md shadow-lg animate-fade-in-out">
+                            <span className="mr-2">Add to faverote</span>✅
+                        </div>
+                    </div>
+                )
+            }
             <div className=" flex gap-4">
                 <div className=" hidden md:block w-1/4 border-2 border-gray-300 p-4 md:ms-25 rounded-[5px] mt-5">
                     <p className=" font-semibold">Products Filter</p>
@@ -64,7 +86,7 @@ const Cataousepage = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" w-11/12 border-2 mx-5 border-gray-300 me-10 p-4 rounded-[5px] mt-5">
+                <div className=" w-11/12 border-2 mx-5 border-gray-300 md:me-10 p-4 rounded-[5px] mt-5">
                     <div className=" flex gap-5 justify-between mx-5">
                         <div className=" flex gap-5">
                             <p>Show</p>
@@ -75,7 +97,7 @@ const Cataousepage = () => {
                                 <option value={60}>60 More</option>
                             </select>
                         </div>
-                        <div className=" flex w-1/2 justify-end gap-5">
+                        <div className=" flex w-full md:w-1/2 items-center justify-end gap-5">
                             <span className=" w-1/12 hover:cursor-pointer">
                                 <img src={gridicon} onClick={() => setRowss(true)} width="20px" />
                             </span>
@@ -97,24 +119,24 @@ const Cataousepage = () => {
                                             </div>
                                         </div>)
                                 }
-                                <div className=" grid grid-cols-1 md:grid-cols-5 gap-5">
+                                <div className=" grid grid-cols-2 md:grid-cols-5 gap-5">
                                     {
                                         fliterdata.map((d) => {
                                             return (
                                                 <div>
-                                                    <div key={d.id} className="w-10/12 mx-auto md:w-full font-medium border-gray-400 border-2 p-2 mt-2 rounded-[5px]">
+                                                    <div key={d.id} className=" mx-auto md:w-full font-medium border-gray-400 border-2 p-4 mt-4 rounded-[5px]">
                                                         <Link to={`/prodate/${d.id}`}>
                                                             <img src={d.images} />
-                                                            <div>
-                                                            </div>
-                                                            <p>{d.title.slice(0, 25)}...</p>
-                                                            <div className=" flex ">
+                                                            <p className="truncate">{d.title}</p>
+                                                            <div className=" flex justify-between ">
                                                                 <p>Price ₹{d.price}</p>
+                                                                <img src={heart} className="w-6 cursor-pointer hover:scale-110 transition" />
                                                             </div>
                                                         </Link>
                                                         <button className=" bg-[#2c4370] 
                                                         text-white hover:bg-white hover:text-[#2c4370]
-                                                         hover:border-2hover:border-[#2c4370] p-1  rounded-[5px]" onClick={()=>handleCart(d.id)}>Add to Cart</button>
+                                                         hover:border-2hover:border-[#2c4370] p-1 
+                                                          rounded-[5px]" onClick={() => handleCart(d.id)}>Add to Cart</button>
                                                     </div>
                                                 </div>
                                             )
@@ -138,29 +160,37 @@ const Cataousepage = () => {
                                     fliterdata.map((d) => {
                                         return (
                                             <div >
-                                                <div key={d.id} className=" font-medium border-gray-400 border-2 p-2 mt-2 rounded-[5px]">
-                                                    <Link to={`/prodate/${d.id}`}>
-                                                        <div className="flex justify-between items-center">
-                                                            <div className=" flex gap-5 w-1/2 items-center">
-                                                                <div className="w-10/12 md:w-1/3">
-                                                                    <img src={d.images} />
-                                                                </div>
-                                                                <div>
-                                                                    <p>{d.title}</p>
-                                                                    <p>Price ₹{d.price}</p>
-                                                                </div>
+                                                <div key={d.id} className=" font-medium border-gray-400
+                                                 border-2 p-2 mt-2 rounded-[5px]">
+                                                    <div className="flex
+                                                        md:flex-row justify-between">
+                                                        <div className=" flex gap-5 md:w-1/2 items-center">
+                                                            <div className="w-1/3 ">
+                                                                <img src={d.images} onClick={() => handleNavepro(d.id)} />
                                                             </div>
-                                                            <div >
-                                                                <button className=" bg-[#2c4370] 
+                                                            <div className="w-1/2 md:w-full">
+                                                                <p onClick={() => handleNavepro(d.id)}>{d.title}</p>
+                                                                <div className="flex justify-between md:w-full group/item items-center">
+                                                                    <p>Price ₹{d.price}</p>
+                                                                    <img src={heart} className="w-6 md:hidden cursor-pointer hover:scale-110 transition"
+                                                                        onClick={() => { handleProid(d.id), poupBox(d.id) }} />
+                                                                </div>
+                                                                <button className=" bg-[#2c4370] md:hidden mt-3
                                                                 text-white hover:bg-white hover:text-[#2c4370] 
-                                                                hover:border-2 hover:border-[#2c4370] px-2 py-1 
-                                                                rounded-[5px]" onClick={()=>handleProid(d.id)}>Add to Cart</button>
+                                                                hover:border-2 hover:border-[#2c4370] px-1 py-1 
+                                                                rounded-[5px]" onClick={() => handleProid(d.id)}>Add to Cart</button>
                                                             </div>
                                                         </div>
-                                                    </Link>
+                                                        <div className="hidden  md:flex h-fit items-center my-10 gap-5">
+                                                            <button className=" bg-[#2c4370] 
+                                                                text-white hover:bg-white hover:text-[#2c4370] 
+                                                                hover:border-2 hover:border-[#2c4370] px-4 py-2 
+                                                                rounded-[5px]" onClick={() => handleProid(d.id)}>Add to Cart</button>
+                                                            <img src={heart} className="hidden md:block w-6 cursor-pointer hover:scale-110 transition"
+                                                                onClick={() => { handleProid(d.id), poupBox(d.id) }} />
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-
                                             </div>
                                         )
                                     })
@@ -168,10 +198,10 @@ const Cataousepage = () => {
                             </div>
                         )
                     }
-
                 </div>
             </div>
         </div>
+
     )
 }
 

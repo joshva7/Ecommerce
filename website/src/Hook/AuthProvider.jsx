@@ -1,9 +1,7 @@
-import React, { createContext, useEffect, useState, useCallback, useMemo } from "react";
+import { createContext, useEffect, useState, useCallback, useMemo } from "react";
 import axios from "axios";
-
 export const AuthContext = createContext();
 const API = "https://api.escuelajs.co/api/v1";
-
 export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(() => localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(() => localStorage.getItem("refreshToken"));

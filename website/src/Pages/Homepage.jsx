@@ -20,6 +20,8 @@ import logo14 from '../assets/logo14.png'
 import Prodaates from "../compontes/Prodaates"
 import Catageory from "../compontes/Catageory"
 import Slider from "react-slick";
+import Loading from '../compontes/Loading'
+import { useEffect, useState } from "react"
 const Homepage = () => {
     const logo = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14,]
     const configer = {
@@ -32,32 +34,53 @@ const Homepage = () => {
         autoplaySpeed: 2000,
         cssEase: "linear"
     }
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        const time = setTimeout(() => {
+            setLoading(false)
+        }, 1000)
+       return()=> clearTimeout(time);
+    }, [])
     return (
-        <div>
-            <Navegationbar />
-            <div className="flex flex-col md:flex-row px-2 mt-10 gap-5">
-                <div className="px-5 md:w-1/2 md:ms-25 ">
-                    <Slider {...configer} >
+        <>
+            {
+                loading ? (
+                    <div>
+                        <Loading />
+                    </div>
+                ) : (
+
+                    <>
                         <div>
-                            <img src={slid1} className=" rounded-[10px] " />
+                            <Navegationbar />
+                            <div className="flex flex-col md:flex-row px-2 mt-10 gap-5">
+                                <div className="px-5 md:w-1/2 md:ms-25 ">
+                                    <Slider {...configer} >
+                                        <div>
+                                            <img src={slid1} className=" rounded-[10px] " />
+                                        </div>
+                                        <div>
+                                            <img src={slid2} className=" rounded-[10px] " />
+                                        </div>
+                                        <div>
+                                            <img src={slid3} className=" rounded-[10px] " />
+                                        </div>
+                                    </Slider>
+                                </div>
+                                <div className=" hidden md:block md:w-1/2 mx-auto">
+                                    <img src={banner} width="350px" className=" rounded-[10px]" />
+                                </div>
+                            </div>
+                            <div className=" mt-5">
+                                <Catageory />
+                                <Prodaates />
+                            </div>
                         </div>
-                        <div>
-                            <img src={slid2} className=" rounded-[10px] " />
-                        </div>
-                        <div>
-                            <img src={slid3} className=" rounded-[10px] " />
-                        </div>
-                    </Slider>
-                </div>
-                <div className=" hidden md:block md:w-1/2 mx-auto">
-                    <img src={banner} width="350px" className=" rounded-[10px]" />
-                </div>
-            </div>
-            <div className=" mt-5">
-                <Catageory />
-                <Prodaates />
-            </div>
-        </div>
+                    </>
+                )
+            }
+        </>
+
     )
 }
 export default Homepage
