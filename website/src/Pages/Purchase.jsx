@@ -41,7 +41,7 @@ const Purchase = () => {
                         <span className="w-1/3 h-15  border-2 border-gray-400 rounded-[5px] py-1 px-5"><img src={ap} width="70px" /></span>
                     </div>
                     <span className=" mx-35 md:mx-75">OR</span>
-                    <p className=" mx-20 md:mx-60">Contact information</p>
+                    <p className=" text-center md:mx-60">Contact information</p>
                     <div>
                         <input type="text" placeholder="Email*" className="w-full border-2 border-gray-400 p-1 my-5 rounded-[5px]" />
                         <div className=" flex gap-2">
@@ -86,9 +86,9 @@ const Purchase = () => {
                                     <p>{data.title}</p>
                                     <p>₹{data.price}</p>
                                 </div>
-                                <div className=" mt-5 ">
+                                <div className=" mt-5 flex justify-between">
                                     <input type="text" placeholder="Enter your coupon" className=" md:w-10/12 border-2 w-min mb-2 border-gray-400 p-1 rounded-[5px]" />
-                                    <button className=" bg-[#2c4370] text-white hover:bg-white hover:text-[#2c4370] hover:border-2 hover:border-[#2c4370] p-1 px-2 rounded-[5px]">Apply</button>
+                                    <button className=" bg-[#2c4370] text-white h-fit hover:bg-white hover:text-[#2c4370] hover:border-2 hover:border-[#2c4370] p-1 px-2 rounded-[5px]">Apply</button>
                                 </div>
                                 <div className=" mt-5 font-bold text-[#3b5384]">
                                     <div className="flex justify-between px-5 pb-2">

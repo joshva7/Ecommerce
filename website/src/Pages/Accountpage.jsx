@@ -58,7 +58,7 @@ const Accountpage = () => {
                             <input placeholder="Update Email" onChange={(e)=>setEmail(e.target.value)}  type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
                             <span className="font-bold">Password</span>
                             <input placeholder="Update Password" onChange={(e)=>setPassword(e.target.value)} type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
-                            <button className=" px-5 py-2 my-2  bg-[#425a8b] text-white rounded-[5px]" onClick={()=>handleupdate(user.id)}>Update</button>
+                            <button className=" px-5 py-2 my-2  bg-[#425a8b] text-white rounded-[5px]" onClick={()=>{handleupdate(user.id),setAccountpg(true),setupdatepg(false)}}>Update</button>
                         </div>
                     )
                 }

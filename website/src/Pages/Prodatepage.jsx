@@ -6,9 +6,11 @@ import Loading from '../compontes/Loading'
 import { useCardsHook } from '../Hook/CartsHook';
 import { Link } from 'react-router-dom';
 import heart from '../assets/heart.svg'
+import { useProData } from '../Hook/Prodatehook';
 const Prodatepage = () => {
     const { handleCart } = useCardsHook()
     const { data, featchdata } = FeatchHook()
+    const {handleProid}=useProData();
     useEffect(() => {
         featchdata("https://api.escuelajs.co/api/v1/products")
     }, [])
@@ -37,20 +39,21 @@ const Prodatepage = () => {
                             <span className='text-2xl font-bold'>Catageory</span>
                             <span className='block text-2xl font-bold'>{catageory[carid]?.category?.name}</span>
                         </div>
-                        <div className='grid grid-cols-2 px-2 md:grid-cols-5 md:mx-25 mt-5 gap-5'>
+                        <div className='grid grid-cols-2 px-2 md:grid-cols-5 md:mx-25 mt-5 gap-3'>
                             {
                                 catageory.map((d) => {
                                     return (
                                         <div className='container border-2 md:w-50 rounded-[5px] p-2' key={d.id}>
-                                            <img src={d.images} />
+                                            <img src={d.images}  className='py-1'/>
                                             <p className=' truncate'>{d.title}</p>
-                                            <div className='group/item'>
-                                                <p>Price {d.price}</p>
-                                                <div className='group/edit invisible  group-hover/item:visible'>
-                                                    <button ><img src={heart} width="30px" onClick={() => handleProid(d.id)} className=' hover:cursor-pointer' /></button>
+                                            <div className='group/item flex justify-between mt-1'>
+                                                <p>Price ₹{d.price}</p>
+                                                <div className='md:invisible  group-hover/item:visible'>
+                                                    <button onClick={() => handleProid(d.id)}>
+                                                    <img src={heart} width="30px"  className=' hover:cursor-pointer' /></button>
                                                 </div>
                                             </div>
-                                            <div className='flex gap-2 mt-5'>
+                                            <div className='flex gap-2 mt-1 md:mt-5'>
                                                 <button className=' bg-blue-400 px-2 py-2 w-1/2 rounded-[5px]' onClick={() => handleCart(d.id)}>Cart</button>
                                                 <Link to={`/purchase/${d.id}`} className=' bg-amber-400 px-2 w-1/2 rounded-[5px]'>
                                                     <button className=' bg-amber-400 px-2 w-full py-2 rounded-[5px]'>Buy</button>

@@ -24,7 +24,7 @@ const Signuppage = () => {
         }
     }
     const handleOathu=()=>{
-        Navigate("*")
+        Navigate("/signup")
     }
     return (
         <div>

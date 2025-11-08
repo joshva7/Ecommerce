@@ -52,8 +52,8 @@ const Cataousepage = () => {
                     </div>
                 )
             }
-            <div className=" flex gap-4">
-                <div className=" hidden md:block w-1/4 border-2 border-gray-300 p-4 md:ms-25 rounded-[5px] mt-5">
+            <div className=" flex mt-5">
+                <div className=" hidden md:block w-1/4 border-2 border-gray-300 p-4 md:ms-8 rounded-[5px] mt-5">
                     <p className=" font-semibold">Products Filter</p>
                     <div className=" font-medium">
                         <div className="flex gap-2 my-2">
@@ -87,7 +87,7 @@ const Cataousepage = () => {
                     </div>
                 </div>
                 <div className=" w-11/12 border-2 mx-5 border-gray-300 md:me-10 p-4 rounded-[5px] mt-5">
-                    <div className=" flex gap-5 justify-between mx-5">
+                    <div className=" flex gap-5 justify-between mx-5 mb-1">
                         <div className=" flex gap-5">
                             <p>Show</p>
                             <select onChange={handleChange} value={show}>
@@ -119,23 +119,21 @@ const Cataousepage = () => {
                                             </div>
                                         </div>)
                                 }
-                                <div className=" grid grid-cols-2 md:grid-cols-5 gap-5">
+                                <div className=" grid grid-cols-2 md:grid-cols-5 gap-2">
                                     {
                                         fliterdata.map((d) => {
                                             return (
                                                 <div>
                                                     <div key={d.id} className=" mx-auto md:w-full font-medium border-gray-400 border-2 p-4 mt-4 rounded-[5px]">
-                                                        <Link to={`/prodate/${d.id}`}>
-                                                            <img src={d.images} />
-                                                            <p className="truncate">{d.title}</p>
-                                                            <div className=" flex justify-between ">
-                                                                <p>Price ₹{d.price}</p>
-                                                                <img src={heart} className="w-6 cursor-pointer hover:scale-110 transition" />
-                                                            </div>
-                                                        </Link>
+                                                        <img className="mb-1 rounded-[5px]" src={d.images} onClick={() => { handleNavepro(d.id) }} />
+                                                        <p className="truncate" onClick={() => { handleNavepro(d.id) }}>{d.title}</p>
+                                                        <div className=" flex justify-between py-2">
+                                                            <p>Price ₹{d.price}</p>
+                                                            <img src={heart} className="w-6 cursor-pointer hover:scale-110 transition"  onClick={() => { handleProid(d.id), poupBox(d.id) }} />
+                                                        </div>
                                                         <button className=" bg-[#2c4370] 
                                                         text-white hover:bg-white hover:text-[#2c4370]
-                                                         hover:border-2hover:border-[#2c4370] p-1 
+                                                         hover:border-2hover:border-[#2c4370] p-1 w-full
                                                           rounded-[5px]" onClick={() => handleCart(d.id)}>Add to Cart</button>
                                                     </div>
                                                 </div>

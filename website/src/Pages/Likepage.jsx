@@ -50,8 +50,8 @@ const Likepage = () => {
                             items.length == 0 ? (
                                 <div className=" flex flex-col items-center">
                                     <img src={cart} width="350px" />
-                                    <p className="text-2xl md:text-4xl mx-25 my-5 font-bold">Your favorite items is <span className=" text-red-600">Empty!</span></p>
-                                    <p>Must add items on the cart befoure you proceed to check out.</p>
+                                    <p className="text-2xl md:text-4xl md:mx-25 my-5 font-bold">Your favorite items is <span className=" text-red-600">Empty!</span></p>
+                                    <p className=" mx-3 md:mx-0">Must add items on the cart befoure you proceed to check out.</p>
                                     <Link to="/home">
                                         <button className=" gap-2 px-4 py-2 bg-red-600 font-bold text-white rounded-4xl my-5 flex"><img src={bag} width="20px" /> Return to Shop</button>
                                     </Link>
@@ -71,7 +71,7 @@ const Likepage = () => {
                                                         <div className="w-full mx-5">
                                                             <p className="md:hidden text-nowrap">{d.title}</p>
                                                             <div className="flex md:w-full
-                                                             md:justify-end md:gap-18 gap-4 items-center mt-4 md:mt-5">
+                                                             md:justify-end md:gap-18 gap-4 md:items-center mt-4 md:mt-5">
                                                                 <span className="my-auto">₹{d.price}</span>
                                                                 <button className=" border-2 border-gray-400 py-1 hover:bg-gray-700 
                                                             hover:text-white px-1 rounded-[5px] h-10" onClick={() => handleCart(d.id)}>Add to cart</button>

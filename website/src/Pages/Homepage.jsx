@@ -1,5 +1,4 @@
 import Navegationbar from "../compontes/Navegationbar"
-import banner from '../assets/banner2.png'
 import slid1 from '../assets/slid1.png'
 import slid2 from '../assets/slid2.png'
 import slid3 from '../assets/slid3.png'
@@ -22,7 +21,10 @@ import Catageory from "../compontes/Catageory"
 import Slider from "react-slick";
 import Loading from '../compontes/Loading'
 import { useEffect, useState } from "react"
+import { useSearch } from "../Hook/Searchprovider"
+import { Link, useNavigate } from "react-router-dom"
 const Homepage = () => {
+    const { searchbar, setSearchbar, filterdata } = useSearch();
     const logo = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14,]
     const configer = {
         dots: true,
@@ -34,13 +36,18 @@ const Homepage = () => {
         autoplaySpeed: 2000,
         cssEase: "linear"
     }
+    const [popupshow, setPopupshow] = useState(false);
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const time = setTimeout(() => {
             setLoading(false)
         }, 1000)
-       return()=> clearTimeout(time);
+        return () => clearTimeout(time);
     }, [])
+    const navegation=useNavigate();
+    const handleShow=(id)=>{
+        navegation(`/prodate/${id}`)
+    }
     return (
         <>
             {
@@ -49,12 +56,49 @@ const Homepage = () => {
                         <Loading />
                     </div>
                 ) : (
-
                     <>
                         <div>
                             <Navegationbar />
-                            <div className="flex flex-col md:flex-row px-2 mt-10 gap-5">
-                                <div className="px-5 md:w-1/2 md:ms-25 ">
+                            <div className=" visible md:invisible mt-4 px-5" onClick={() => setPopupshow(true)}>
+                                <input type="text" onChange={(e) => setSearchbar(e.target.value)} placeholder="Enter the product..." className="container border-2 p-2 rounded-[5px]" />
+                            </div>
+                            <div>
+                                {
+                                    popupshow && (
+                                        <div className='flex w-full  bg-gray-400  h-1/2 overflow-y-scroll fixed top-34  z-90 rounded-[5px]'>
+                                            <div className=' w-1/2'>
+                                                <p className='my-5 mx-10'>{searchbar}</p>
+                                                <button className='bg-white rounded-2xl px-2 py-2' onClick={() => setPopupshow(false)}>Close</button>
+                                            </div>
+                                            <div className='border-l-2 px-3 py-4 w-1/2'>
+                                                <p>Products for "{searchbar}"</p>
+                                                <div>
+                                                    {
+                                                        filterdata.map((d) => {
+                                                            return (
+                                                                <>
+                                                                    <div className='flex my-2 items-center gap-5 justify-between' onClick={()=>handleShow(d.id)}>
+                                                                        <span className=' w-1/2'><img src={d.images} className='rounded-[5px]' /></span>
+                                                                        <p className=' truncate'>
+                                                                            {d.title}
+                                                                        </p>
+                                                                        {/* <Link to={`/prodate/${d.id}`}>
+                                                                            <span onClick={() => setPopupshow(false)} className='bg-white rounded-2xl px-2 py-2'>Click</span>
+                                                                        </Link> */}
+                                                                    </div >
+                                                                </>
+                                                            )
+                                                        })
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div >
+                                    )
+                                }
+                            </div>
+                            <div className="md:flex-row container w-10/12 md:w-1/2 px-3 mt-4 md:mt-10 mx-auto">
+                                <div className=" container ">
                                     <Slider {...configer} >
                                         <div>
                                             <img src={slid1} className=" rounded-[10px] " />
@@ -66,9 +110,6 @@ const Homepage = () => {
                                             <img src={slid3} className=" rounded-[10px] " />
                                         </div>
                                     </Slider>
-                                </div>
-                                <div className=" hidden md:block md:w-1/2 mx-auto">
-                                    <img src={banner} width="350px" className=" rounded-[10px]" />
                                 </div>
                             </div>
                             <div className=" mt-5">

@@ -1,6 +1,5 @@
 import heart from '../assets/heart.svg'
 import person from '../assets/person.svg'
-import menu from '../assets/menu.svg'
 import cart from '../assets/cart.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import { useLenHook } from '../Hook/LengthHook'
@@ -13,7 +12,6 @@ const Navegationbar = () => {
     console.log(user);
     const navegation = useNavigate()
     const { lengthdata } = useLenHook();
-    const [show, setShow] = useState(false);
     const { searchbar, filterdata } = useSearch()
     const [popupshow, setPopupshow] = useState(false);
     const [account, setAccount] = useState(false);
@@ -27,10 +25,10 @@ const Navegationbar = () => {
             <div className=" flex justify-between px-10 py-5  bg-gray-50 border-b-2  w-full  sticky top-0 z-50">
                 <div className=' flex items-baseline gap-10'>
                     <p className=' font-bold text-2xl'>
-                       <Link to={"/home"}>
-                       Ecom
-                       </Link> 
-                       </p>
+                        <Link to={"/home"}>
+                            Ecom
+                        </Link>
+                    </p>
                     <div className='hidden md:block'>
                         <span onClick={() => setPopupshow(true)}>
                             <Searchfiled />
@@ -79,7 +77,6 @@ const Navegationbar = () => {
                                 <span className=' absolute flex justify-center items-center top-4 rounded-2xl h-4 w-4 left-4 bg-amber-400 '>{lengthdata}</span>
                             </li>
                         </Link>
-                        <li className='block md:hidden' onClick={() => setShow((prev) => !prev)}><img src={menu} width="30px" /></li>
                     </ul>
                 </div>
             </div>
@@ -117,21 +114,6 @@ const Navegationbar = () => {
                     </div >
                 )
             }
-
-            {
-                show && (
-                    <div className='fixed inset-0 bg-black/60 z-9999'>
-                        <div className='absolute top-0 left-0 bg-black text-white w-1/2 h-full p-5 flex flex-col gap-4 z-50'>
-                            <p className='text-xl font-semibold border-b border-gray-600 pb-2'>Menu</p>
-                            <Link to="/home" onClick={() => setShow(false)}>Home</Link>
-                            <Link to="/checkpro" onClick={() => setShow(false)}>Wishlist</Link>
-                            <Link to="/carts" onClick={() => setShow(false)}>Cart</Link>
-                        </div>
-                    </div>
-                )
-            }
-
-
         </>
     )
 }

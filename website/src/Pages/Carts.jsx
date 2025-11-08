@@ -96,7 +96,7 @@ const Carts = () => {
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className='hidden md:grid grid-cols-4  gap-20 w-1/2 items-center'>
+                                                                <div className='hidden md:flex justify-between space-x-5 items-center me-4'>
                                                                     <div>
                                                                         <p>${d.price}</p>
                                                                     </div>
@@ -108,7 +108,9 @@ const Carts = () => {
                                                                     <div>
                                                                         <p>${d.price * d.quantity}</p>
                                                                     </div>
-                                                                    <button className=" " onClick={() => handleRemovecart(d.id)}><img src={bin} width="40px" /></button>
+                                                                    <div>
+                                                                    <button className=" w-6" onClick={() => handleRemovecart(d.id)}><img src={bin} width="40px" /></button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         )
@@ -119,8 +121,8 @@ const Carts = () => {
                                                 : (
                                                     <div className=" flex flex-col items-center">
                                                         <img src={emcart} width="350px" />
-                                                        <p className="text-2xl md:text-4xl mx-25 my-5 font-bold">Your Cart is <span className=" text-red-600">Empty!</span></p>
-                                                        <p>Must add items on the cart befoure you proceed to check out.</p>
+                                                        <p className="text-2xl flex md:text-4xl md:mx-25 my-5 font-bold gap-2">Your Cart is <span className=" text-red-600"> Empty!</span></p>
+                                                        <p className=''>Must add items on the cart befoure you proceed to check out.</p>
                                                         <Link to="/home">
                                                             <button className=" gap-2 px-4 py-2 bg-red-600 font-bold text-white rounded-4xl my-5 flex"><img src={bag} width="20px" /> Return to Shop</button>
                                                         </Link>
