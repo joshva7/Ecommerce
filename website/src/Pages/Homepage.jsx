@@ -59,8 +59,8 @@ const Homepage = () => {
                     <>
                         <div>
                             <Navegationbar />
-                            <div className=" visible md:invisible mt-4 px-5" onClick={() => setPopupshow(true)}>
-                                <input type="text" onChange={(e) => setSearchbar(e.target.value)} placeholder="Enter the product..." className="container border-2 p-2 rounded-[5px]" />
+                            <div className=" visible md:invisible mt-4 px-5" onClick={() => {setPopupshow(true),navegation("/searchmobile")}}>
+                                <input name="prodatesearch" type="text" onChange={(e) => setSearchbar(e.target.value)} placeholder="Enter the product..." className="container border-2 p-2 rounded-[5px]" />
                             </div>
                             <div>
                                 {
@@ -77,14 +77,11 @@ const Homepage = () => {
                                                         filterdata.map((d) => {
                                                             return (
                                                                 <>
-                                                                    <div className='flex my-2 items-center gap-5 justify-between' onClick={()=>handleShow(d.id)}>
+                                                                    <div key={d.id} className='flex my-2 items-center gap-5 justify-between' onClick={()=>handleShow(d.id)}>
                                                                         <span className=' w-1/2'><img src={d.images} className='rounded-[5px]' /></span>
                                                                         <p className=' truncate'>
                                                                             {d.title}
                                                                         </p>
-                                                                        {/* <Link to={`/prodate/${d.id}`}>
-                                                                            <span onClick={() => setPopupshow(false)} className='bg-white rounded-2xl px-2 py-2'>Click</span>
-                                                                        </Link> */}
                                                                     </div >
                                                                 </>
                                                             )
@@ -97,7 +94,7 @@ const Homepage = () => {
                                     )
                                 }
                             </div>
-                            <div className="md:flex-row container w-10/12 md:w-1/2 px-3 mt-4 md:mt-10 mx-auto">
+                            <div className="md:flex-row container w-10/12 md:w-1/2 px-3 mt-4  mx-auto">
                                 <div className=" container ">
                                     <Slider {...configer} >
                                         <div>

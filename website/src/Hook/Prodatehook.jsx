@@ -13,7 +13,6 @@ export const Prodatehook = ({children }) => {
     const removepro=(id)=>{
         setProid((prev)=>prev.filter((items)=>items!==id))
     }
-    console.log(proid);
     return (
         <ProContext.Provider value={{ proid, handleProid,removepro }}>
             {children}

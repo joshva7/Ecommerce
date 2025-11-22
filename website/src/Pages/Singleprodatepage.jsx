@@ -17,9 +17,7 @@ const Singleprodatepage = () => {
     const {data,featchdata}=FeatchHook()
     useEffect(() => {
         featchdata(`https://api.escuelajs.co/api/v1/products/${id}`)
-    }, [id])
-    console.log(data);
-    
+    }, [id])    
     function decrement() {
         if (count > 1) {
             setCount(count - 1);

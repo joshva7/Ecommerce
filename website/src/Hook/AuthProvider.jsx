@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
       throw new Error(`Signup failed: ${res.status} - ${err}`);
     }
     const data = await res.json();
-    console.log("User created:", data);
     return data;
   };
 

@@ -19,7 +19,6 @@ const Purchase = () => {
         if (coupenref.current.value === "Happycodebyjoshva") {
             let coupen = discount % 10;
             Setdiscount(discount - coupen)
-            console.log(discount);
         }
     }
     const idpro = id
@@ -43,9 +42,9 @@ const Purchase = () => {
                     <span className=" mx-35 md:mx-75">OR</span>
                     <p className=" text-center md:mx-60">Contact information</p>
                     <div>
-                        <input type="text" placeholder="Email*" className="w-full border-2 border-gray-400 p-1 my-5 rounded-[5px]" />
+                        <input  name="purchasefiled" type="text" placeholder="Email*" className="w-full border-2 border-gray-400 p-1 my-5 rounded-[5px]" />
                         <div className=" flex gap-2">
-                            <input type="checkbox"></input>
+                            <input name="purchasefiled" type="checkbox"></input>
                             <p>
                                 Keep me up to date on news and exclusive offers
                             </p>
@@ -53,22 +52,22 @@ const Purchase = () => {
                         <p className=" font-bold my-1">Shipping address</p>
                         <div>
                             <div className="flex gap-5 my-2">
-                                <input type="text" placeholder="First name*" className=" w-1/2 border-2 border-gray-400 p-1  px-2 rounded-[5px]" />
-                                <input type="text" placeholder="Last name*" className="w-1/2 border-2 border-gray-400 p-1  px-2 rounded-[5px]" />
+                                <input  name="purchasefiled" type="text" placeholder="First name*" className=" w-1/2 border-2 border-gray-400 p-1  px-2 rounded-[5px]" />
+                                <input  name="purchasefiled" type="text" placeholder="Last name*" className="w-1/2 border-2 border-gray-400 p-1  px-2 rounded-[5px]" />
                             </div>
-                            <input type="text" placeholder="Address 1*" className=" w-full border-2 border-gray-400 p-1  px-2 my-2 rounded-[5px]" />
-                            <input type="text" placeholder="Address 2*" className=" w-full border-2 border-gray-400 p-1  px-2 rounded-[5px] my-2" />
+                            <input type="text" placeholder="Address 1*"  name="purchasefiled" className=" w-full border-2 border-gray-400 p-1  px-2 my-2 rounded-[5px]" />
+                            <input type="text" placeholder="Address 2*"  name="purchasefiled" className=" w-full border-2 border-gray-400 p-1  px-2 rounded-[5px] my-2" />
                             <div className="flex gap-5 my-2">
                                 <select className=" w-1/2 border-2 border-gray-400 p-1 rounded-[5px]">
                                     <option>Section on option</option>
                                     <option>Prodate</option>
                                 </select >
-                                <input type="text" placeholder="City*" className="w-1/2 border-2 border-gray-400 p-1  px-2 rounded-[5px]" />
+                                <input type="text" placeholder="City*"  name="purchasefiled" className="w-1/2 border-2 border-gray-400 p-1  px-2 rounded-[5px]" />
                             </div>
-                            <input type="text" placeholder="PostCode/ZIP*" className="w-full border-2 border-gray-400 p-1  px-2 my-2 rounded-[5px]" />
+                            <input type="text" placeholder="PostCode/ZIP*"  name="purchasefiled" className="w-full border-2 border-gray-400 p-1  px-2 my-2 rounded-[5px]" />
                             <div className="flex gap-5 my-2">
-                                <input type="text" placeholder="Company name*" className=" w-1/2 border-2 border-gray-400 p-1 rounded-[5px]  px-2" />
-                                <input type="text" placeholder="Phone*" className="w-1/2 border-2 border-gray-400 p-1  rounded-[5px]  px-2" />
+                                <input type="text" placeholder="Company name*"  name="purchasefiled" className=" w-1/2 border-2 border-gray-400 p-1 rounded-[5px]  px-2" />
+                                <input type="text" placeholder="Phone*"  name="purchasefiled" className="w-1/2 border-2 border-gray-400 p-1  rounded-[5px]  px-2" />
                             </div>
                             <textarea rows="4" cols="5" className="w-full border-2 border-gray-400 p-1 my-2 rounded-[5px] px-2" placeholder="Addtital information"></textarea>
                         </div>
@@ -87,7 +86,7 @@ const Purchase = () => {
                                     <p>₹{data.price}</p>
                                 </div>
                                 <div className=" mt-5 flex justify-between">
-                                    <input type="text" placeholder="Enter your coupon" className=" md:w-10/12 border-2 w-min mb-2 border-gray-400 p-1 rounded-[5px]" />
+                                    <input type="text" placeholder="Enter your coupon"  name="purchasefiled" className=" md:w-10/12 border-2 w-min mb-2 border-gray-400 p-1 rounded-[5px]" />
                                     <button className=" bg-[#2c4370] text-white h-fit hover:bg-white hover:text-[#2c4370] hover:border-2 hover:border-[#2c4370] p-1 px-2 rounded-[5px]">Apply</button>
                                 </div>
                                 <div className=" mt-5 font-bold text-[#3b5384]">
@@ -111,7 +110,7 @@ const Purchase = () => {
                                     {
                                         Cartpro.map((d) => {
                                             return (
-                                                <div className=" flex gap-2   items-center font-medium border-gray-400 border-2 p-2 mt-2 rounded-[5px]">
+                                                <div key={d.id} className=" flex gap-2 items-center font-medium border-gray-400 border-2 p-2 mt-2 rounded-[5px]">
                                                     <div>
                                                         <img src={d.images} width="100px" />
                                                     </div>
@@ -126,7 +125,7 @@ const Purchase = () => {
                                     }
                                 </div>
                                 <div className=" mt-5 ">
-                                    <input type="text" ref={coupenref} placeholder="Enter your coupon" className=" md:w-10/12 border-2 w-min mb-2 border-gray-400 p-1 rounded-[5px]" />
+                                    <input type="text" ref={coupenref}  name="purchasefiled" placeholder="Enter your coupon" className=" md:w-10/12 border-2 w-min mb-2 border-gray-400 p-1 rounded-[5px]" />
                                     <button className=" bg-[#2c4370] text-white hover:bg-white hover:text-[#2c4370] hover:border-2 hover:border-[#2c4370] p-1 px-2 rounded-[5px]" value="Happycodebyjoshva" onClick={handleCoupen}>Apply</button>
                                 </div>
                                 <div className=" mt-5 font-bold text-[#3b5384]">

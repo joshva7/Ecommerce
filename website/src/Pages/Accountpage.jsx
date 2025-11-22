@@ -3,7 +3,6 @@ import { useContext, useState } from "react"
 import { AuthContext } from '../Hook/AuthProvider'
 const Accountpage = () => {
     const { user,update } = useContext(AuthContext);
-    console.log(user);
     const [accountpg, setAccountpg] = useState(true)
     const [updatepg, setupdatepg] = useState(false)
     const [name,setName]=useState('')
@@ -53,11 +52,14 @@ const Accountpage = () => {
                         <div className="flex flex-col gap-4 md:mx-25 my-5 w-full">
                             <span className="text-2xl font-bold">Update</span>
                             <span className="font-bold">Username:</span>
-                            <input placeholder="Update username" onChange={(e)=>setName(e.target.value)} type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
+                            <input placeholder="Update username" onChange={(e)=>setName(e.target.value)}
+                            name="username" type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
                             <span className="font-bold">Email:</span>
-                            <input placeholder="Update Email" onChange={(e)=>setEmail(e.target.value)}  type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
+                            <input placeholder="Update Email"
+                            name="email" onChange={(e)=>setEmail(e.target.value)}  type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
                             <span className="font-bold">Password</span>
-                            <input placeholder="Update Password" onChange={(e)=>setPassword(e.target.value)} type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
+                            <input placeholder="Update Password" 
+                            name="password" onChange={(e)=>setPassword(e.target.value)} type="text" className="outline-none px-5 py-2 border-2 border-gray-300 rounded-[5px]" />
                             <button className=" px-5 py-2 my-2  bg-[#425a8b] text-white rounded-[5px]" onClick={()=>{handleupdate(user.id),setAccountpg(true),setupdatepg(false)}}>Update</button>
                         </div>
                     )

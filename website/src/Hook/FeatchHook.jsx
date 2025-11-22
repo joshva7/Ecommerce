@@ -6,10 +6,10 @@ export const FeatchHook = () => {
                await fetch(url)
                 .then((d)=>d.json())
                 .then((d)=>setData(d))
-                .catch((err)=>console.log(err))
+                .catch((err)=>console.error(err))
             }
             catch(e){
-                console.log(e)
+                console.error(e)
             }
         }
     return {data,featchdata};

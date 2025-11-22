@@ -15,6 +15,7 @@ import { AuthProvider } from '../Hook/AuthProvider'
 import { Searchprovider } from "../Hook/Searchprovider";
 import Accountpage from "../Pages/Accountpage";
 import Errorpage from "../Pages/Errorpage";
+import Mobilesearch from "../Pages/Mobilesearch";
 function Mainroute() {
     return (
         <Router>
@@ -36,6 +37,7 @@ function Mainroute() {
                                     <Route path="/catageory/:id" element={<Prodatepage />} />
                                     <Route path="/account" element={<Accountpage />} />
                                     <Route path="*" element={<Errorpage />} />
+                                    <Route path="/searchmobile" element={<Mobilesearch />} />
                                 </Routes>
                             </Searchprovider>
                         </AuthProvider>
@@ -45,5 +47,4 @@ function Mainroute() {
         </Router>
     )
 }
-
 export default Mainroute

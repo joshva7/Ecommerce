@@ -9,7 +9,6 @@ import { useSearch } from '../Hook/Searchprovider'
 import { AuthContext } from '../Hook/AuthProvider'
 const Navegationbar = () => {
     const { user, logout } = useContext(AuthContext)
-    console.log(user);
     const navegation = useNavigate()
     const { lengthdata } = useLenHook();
     const { searchbar, filterdata } = useSearch()
@@ -22,14 +21,14 @@ const Navegationbar = () => {
     }
     return (
         <>
-            <div className=" flex justify-between px-10 py-5  bg-gray-50 border-b-2  w-full  sticky top-0 z-50">
+            <div className=" flex justify-between px-10 py-5   bg-gray-50 border-b-2  w-full  sticky top-0 z-50">
                 <div className=' flex items-baseline gap-10'>
-                    <p className=' font-bold text-2xl'>
+                    <p className='font-bold text-2xl font-[RobotoBold]'>
                         <Link to={"/home"}>
                             Ecom
                         </Link>
                     </p>
-                    <div className='hidden md:block'>
+                    <div className='hidden md:block font-[RobotoMedium]'>
                         <span onClick={() => setPopupshow(true)}>
                             <Searchfiled />
                         </span>
@@ -56,7 +55,8 @@ const Navegationbar = () => {
                                 {
                                     account && (
                                         <div className=' fixed z-50 top-21 bg-white rounded-[5px] border-2 border-gray-400 px-6 py-5  '>
-                                            <span className='block my-2' onClick={() => setAccount(false)}><Link to={"/account"}>
+                                            <span className='block my-2' onClick={() => setAccount(false)}>
+                                            <Link to={"/account"}>
                                                 Myaccount
                                             </Link>
                                             </span>
@@ -94,8 +94,7 @@ const Navegationbar = () => {
                                     filterdata.map((d) => {
                                         return (
                                             <>
-
-                                                <div className='flex my-2 items-center gap-5 justify-between'>
+                                                <div key={d.id} className='flex my-2 items-center gap-5 justify-between'>
                                                     <span className='w-1/5'><img src={d.images} className='rounded-[5px]' /></span>
                                                     <p className=' truncate'>
                                                         {d.title}

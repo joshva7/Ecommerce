@@ -18,8 +18,8 @@ const Prodaates = () => {
     return (
         <div>
             <div className=' flex my-2 mx-5 justify-between md:mx-25'>
-                <p className='font-bold text-2xl'>Prodates</p>
-                <p className='font-bold text-2xl md:me-20'><Link to="/cataouse">More</Link></p>
+                <p className='font-[RobotoBold] text-2xl'>Product</p>
+                <p className='font-[RobotoBold] text-2xl md:me-20'><Link to="/cataouse">More</Link></p>
             </div>
             <div className='grid grid-cols-2 mx-4 md:flex gap-3 md:gap-8 justify-around md:mx-25 '>
                 {

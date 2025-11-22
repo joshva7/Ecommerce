@@ -17,7 +17,6 @@ export const Searchprovider = ({ children }) => {
             setFilterdata([])
         }
     }, [data, searchbar])
-    console.log(filterdata, "Searchpro");
     return (
         <Seartcontext.Provider value={{ searchbar, setSearchbar, filterdata }}>{children}</Seartcontext.Provider>
     )

@@ -52,36 +52,36 @@ const Cataousepage = () => {
                     </div>
                 )
             }
-            <div className=" flex mt-5">
+            <div className=" flex mt-5 ">
                 <div className=" hidden md:block w-1/4 border-2 border-gray-300 p-4 md:ms-8 rounded-[5px] mt-5">
                     <p className=" font-semibold">Products Filter</p>
                     <div className=" font-medium">
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => setFliterdata(data)} />
+                            <input name="checkbox" type="checkbox" onClick={() => setFliterdata(data)} />
                             <p>All Prodate</p>
                         </div>
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => filtervalue(0, 100)} />
+                            <input name="checkbox" type="checkbox" onClick={() => filtervalue(0, 100)} />
                             <p>Free - 100</p>
                         </div>
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => filtervalue(100, 200)} />
+                            <input name="checkbox" type="checkbox" onClick={() => filtervalue(100, 200)} />
                             <p>100 - 200</p>
                         </div>
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => filtervalue(200, 400)} />
+                            <input name="checkbox" type="checkbox" onClick={() => filtervalue(200, 400)} />
                             <p>200 - 400</p>
                         </div>
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => filtervalue(400, 600)} />
+                            <input name="checkbox" type="checkbox" onClick={() => filtervalue(400, 600)} />
                             <p>400 - 600</p>
                         </div>
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => filtervalue(600, 800)} />
+                            <input name="checkbox" type="checkbox" onClick={() => filtervalue(600, 800)} />
                             <p>600 - 800</p>
                         </div>
                         <div className="flex gap-2 my-2">
-                            <input type="checkbox" onClick={() => filtervalue(1000, 9999)} />
+                            <input name="checkbox" type="checkbox" onClick={() => filtervalue(1000, 9999)} />
                             <p>Over 1000</p>
                         </div>
                     </div>
@@ -123,13 +123,13 @@ const Cataousepage = () => {
                                     {
                                         fliterdata.map((d) => {
                                             return (
-                                                <div>
-                                                    <div key={d.id} className=" mx-auto md:w-full font-medium border-gray-400 border-2 p-4 mt-4 rounded-[5px]">
+                                                <div key={d.id}>
+                                                    <div  className=" mx-auto md:w-full font-medium border-gray-400 border-2 p-4 mt-4 rounded-[5px]">
                                                         <img className="mb-1 rounded-[5px]" src={d.images} onClick={() => { handleNavepro(d.id) }} />
                                                         <p className="truncate" onClick={() => { handleNavepro(d.id) }}>{d.title}</p>
                                                         <div className=" flex justify-between py-2">
                                                             <p>Price ₹{d.price}</p>
-                                                            <img src={heart} className="w-6 cursor-pointer hover:scale-110 transition"  onClick={() => { handleProid(d.id), poupBox(d.id) }} />
+                                                            <img src={heart} className="w-6 cursor-pointer hover:scale-110 transition" onClick={() => { handleProid(d.id), poupBox(d.id) }} />
                                                         </div>
                                                         <button className=" bg-[#2c4370] 
                                                         text-white hover:bg-white hover:text-[#2c4370]
@@ -157,8 +157,8 @@ const Cataousepage = () => {
                                 {
                                     fliterdata.map((d) => {
                                         return (
-                                            <div >
-                                                <div key={d.id} className=" font-medium border-gray-400
+                                            <div key={d.id} >
+                                                <div  className=" font-medium border-gray-400
                                                  border-2 p-2 mt-2 rounded-[5px]">
                                                     <div className="flex
                                                         md:flex-row justify-between">

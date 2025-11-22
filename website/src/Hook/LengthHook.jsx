@@ -5,7 +5,6 @@ export const LengthHook = ({children}) => {
     const Lengthmethod=(val)=>{
         setLengthdata(val);
     }
-    console.log(lengthdata);
   return (
     <Lengthdata.Provider value={{lengthdata,Lengthmethod}}>
         {children}

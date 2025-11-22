@@ -8,7 +8,7 @@ const Catageory = () => {
     }, [])
     return (
         <div>
-            <span className="mx-5 md:mx-28 text-2xl font-medium">categories</span>
+            <span className="mx-5 md:mx-28 text-2xl font-[RobotoBold]">Categories</span>
                 <div className=' grid grid-cols-2 mx-4 md:flex gap-4 mt-3 md:gap-8 justify-around md:mx-25'>
                     {
                         data.slice(0, 5).map((d) => {
