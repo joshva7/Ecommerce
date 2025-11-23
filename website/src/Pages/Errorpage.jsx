@@ -1,14 +1,12 @@
-import Navegationbar from "../compontes/Navegationbar"
 import errorimg from '../assets/error.png'
 import { useNavigate } from "react-router-dom"
 const Errorpage = () => {
     const navegation = useNavigate()
     const HandleBackpage=()=>{
-        navegation("/home")
+        navegation("/")
     }
   return (
     <div>
-        <Navegationbar />
         <div className="flex my-25 flex-col gap-2 items-center ">
             <div>
                 <img src={errorimg} />
