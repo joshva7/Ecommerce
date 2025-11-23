@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react'
+import { useEffect,  } from 'react'
 import { useProData } from '../Hook/Prodatehook';
 import heart from '../assets/heart.svg'
 import { useCardsHook } from '../Hook/CartsHook';
@@ -21,12 +21,12 @@ const Prodaates = () => {
                 <p className='font-[RobotoBold] text-2xl'>Product</p>
                 <p className='font-[RobotoBold] text-2xl md:me-20'><Link to="/cataouse">More</Link></p>
             </div>
-            <div className='grid grid-cols-2 mx-4 md:flex gap-3 md:gap-8 justify-around md:mx-25 '>
+            <div className='grid grid-cols-2 mx-4 md:flex gap-3 items-center md:mx-25 justify-around  '>
                 {
                     data.slice(0, 5).map((d) => {
-                        return (
+                        return ( 
                             <div className='border-2 mt-2 md:my-5 md:w-1/5 rounded-[5px] p-2' key={d.id}>
-                                <img src={d.images} className='h-fit w-full' />
+                                <img src={d.images} className='' />
                                 <p className='truncate'>{d.title}</p>
                                 <div className=' flex  justify-between group/item'>
                                     <p>Price ₹{d.price}</p>

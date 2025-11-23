@@ -10,9 +10,14 @@ const Signuppage = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [averthar, setAverthar] = useState("")
+    const [passlen, setPasslen] = useState(false)
     const Navigate = useNavigate();
+
     const signupSumbit = async (e) => {
         e.preventDefault();
+        if(password.length<4){
+            setPasslen(true)
+        }
         if (!username || !email || !password || !averthar) {
             alert("Please fill all fields before submitting");
             return;
@@ -23,7 +28,7 @@ const Signuppage = () => {
             Navigate("/home");
         }
     }
-    const handleOathu=()=>{
+    const handleOathu = () => {
         Navigate("/signup")
     }
     return (
@@ -40,11 +45,12 @@ const Signuppage = () => {
                         <span>Email*</span>
                         <input name='emailfiled' type="text" placeholder="Email*" onChange={(e) => setEmail(e.target.value)} className="outline-none px-5 py-2 my-2 border-2 border-gray-300 rounded-[5px]" required />
                         <span>Password*</span>
-                        <input type="text" name='passwordfiled' placeholder="Password*" onChange={(e) => setPassword(e.target.value)} className="outline-none px-5 py-2 my-2 border-2 border-gray-300 rounded-[5px]" required />
-                        <span>Averthar*</span>
-                        <input type="text" name='avertharfiled' placeholder="averthar*" onChange={(e) => setAverthar(e.target.value)} className="outline-none px-5 py-2 my-2 border-2 border-gray-300 rounded-[5px]" required />
+                        <input type="text" name='passwordfiled' placeholder="Password*" onChange={(e) => { setPassword(e.target.value), setAverthar("https://picsum.photos/200/300") }} className="outline-none px-5 py-2 my-2 border-2 border-gray-300 rounded-[5px]" required />
+                        {passlen && (
+                            <p className=' text-red-600'>Password morethan 4 charater</p>
+                        )}
                         <div>
-                            <input  name="checkbox" type="checkbox" className="me-2" />
+                            <input name="checkbox" type="checkbox" className="me-2" />
                             <span>By clicking Register button, you agree our terms and policy,</span>
                         </div>
                         <button className=" px-5 py-2 my-2  bg-[#425a8b] text-white rounded-[5px]" onClick={(e) => signupSumbit(e)}>
